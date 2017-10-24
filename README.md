@@ -15,4 +15,4 @@ týchto topológiach je napı́saný bandwith a oneskorenia.
 Na konci článku je spı́sané zariadenie na ktorom boly simulácie vykonané
 a zhrnutie týchto výsledkov.
 
-[url]: <http://daringfireball.net/projects/markdown/>
+[url]: <https://dl.acm.org/citation.cfm?id=3095791>
