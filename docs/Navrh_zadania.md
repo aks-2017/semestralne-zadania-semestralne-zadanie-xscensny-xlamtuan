@@ -1,4 +1,4 @@
-# Navrh
+# Návrh
 
 Planujeme postupovať rovnakou metodológiou ako autori článku, ale v našom riešení chceme upraviť niektoré vlastnosti a funkcionalitu. Potom by sme radi porovnali a overili výsledky ich práce.
  1. Inštalácia prostredia v ktorom sa bude overovanie odohrávať: mininet ktorý bude priamo nainštalovaný na Ubuntu distribúcií Linuxu
