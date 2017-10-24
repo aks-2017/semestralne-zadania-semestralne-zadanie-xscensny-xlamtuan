@@ -12,6 +12,7 @@ Autori prezentujú svoju metódu založenú na OpenFlow s POX kontrolérom. Nimi
 
 ## Software defined network (SDN)
 je metóda používania otvorených protokolov ako napr.: OpenFlow, na prístup k smerovačom a prepínačom ktoré by normálne používaly uzavretý a vlastný firmvér. Softvérové definované siete ponúkajú množstvo výhod, medzi ktoré patrí poskytovanie služieb na požiadanie, automatické vyvažovanie záťaže, zjednodušená fyzická infraštruktúra a schopnosť škálovať sieťové zdroje v zámke s potrebami aplikácií a dát. V spojení s prebiehajúcou virtualizáciou serverov a úložných priestorov, SDN uvádza najmenej úplne virtualizované dátové centrum, kde sa budú rozmiestňovať koncové počítačové prostredia a vyradiť ich z prevádzky.[^1]
+
  ![trad-SDN](https://image.slidesharecdn.com/ryu-sdn-framework-upload-130914010856-phpapp01/95/ryu-sdn-framework-7-638.jpg?cb=1379121452)
 
 ## OpenFLow
