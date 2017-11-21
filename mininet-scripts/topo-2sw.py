@@ -15,8 +15,8 @@ class MyTopo( Topo ):
 		self.addLink( switch1, switch2)
 		self.addLink( switch1, switch3)
 		self.addLink( switch1, switch4)
-		self.addLink(switch2, switch3)
-		self.addLink(switch2, switch4)
+		self.addLink( switch2, switch3)
+		self.addLink( switch2, switch4)
 
-topos = { 'mytopo': MyTopo }
+topos = { 'mytopo': ( lambda: MyTopo() ) }
 	
