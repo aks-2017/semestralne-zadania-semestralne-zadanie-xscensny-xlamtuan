@@ -85,7 +85,7 @@ class IcmpResponder(app_manager.RyuApp):
                                    code=icmp.ICMP_ECHO_REPLY_CODE,
                                    csum=0,
                                    data=pkt_icmp.data))
-        self.logger.info("packet in icmp")
+        print "i got icmp"
         self._send_packet(datapath, port, pkt)
 
     def _send_packet(self, datapath, port, pkt):
