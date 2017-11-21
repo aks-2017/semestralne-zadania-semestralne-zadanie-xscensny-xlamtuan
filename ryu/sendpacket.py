@@ -43,6 +43,7 @@ class IcmpResponder(app_manager.RyuApp):
         datapath = msg.datapath
         port = msg.match['in_port']
         pkt = packet.Packet(data=msg.data)
+        print 'Hello Packet!!'
         self.logger.info("packet-in %s" % (pkt,))
         pkt_ethernet = pkt.get_protocol(ethernet.ethernet)
         if not pkt_ethernet:
