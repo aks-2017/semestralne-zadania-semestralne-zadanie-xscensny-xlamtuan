@@ -40,6 +40,18 @@ class SimpleSwitch(app_manager.RyuApp):
         self.topology_api_app = self
         self.mac_to_port = {}
 
+    @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
+    def switch_features_handler(self, ev):
+        datapath = ev.msg.datapath
+        ofproto = datapath.ofproto
+        parser = datapath.ofproto_parser
+        self.logger.info("Config_Dispatcher")
+        # install the table-miss flow entry.
+        match = parser.OFPMatch()
+        actions = [parser.OFPActionOutput(ofproto.OFPP_CONTROLLER,
+                                          ofproto.OFPCML_NO_BUFFER)]
+        self.add_flow(datapath, 0, match, actions)
+
     def add_flow(self, datapath, in_port, dst, actions):
         ofproto = datapath.ofproto
 
@@ -59,6 +71,7 @@ class SimpleSwitch(app_manager.RyuApp):
         datapath = msg.datapath
         ofproto = datapath.ofproto
 
+        
         pkt = packet.Packet(msg.data)
         eth = pkt.get_protocol(ethernet.ethernet)
 
