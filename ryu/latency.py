@@ -18,7 +18,7 @@ class customLatency(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_0.OFP_VERSIONS]
 
     def __init__(self, *args, **kwargs):
-        super(customLatency, self).__init__(*args, **kwargs)
+        super(SimpleSwitch, self).__init__(*args, **kwargs)
         self.topology_api_app = self
         # some other code could come here
     
