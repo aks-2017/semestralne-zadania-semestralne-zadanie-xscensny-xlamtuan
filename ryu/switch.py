@@ -53,7 +53,7 @@ class SimpleSwitch(app_manager.RyuApp):
         match = parser.OFPMatch()
         # actions = [parser.OFPActionOutput(ofproto.OFPP_CONTROLLER,
         #                                   ofproto.OFPCML_NO_BUFFER)]
-        actions = [parser.OFPActionOutput(ofproto.OFPP_CONTROLLER, 65000)]
+        actions = [parser.OFPActionOutput(ofproto.OFPP_CONTROLLER, 65535)]
         self.add_flow(datapath, 0, match, actions)
 
     def add_flow(self, datapath, in_port, dst, actions):
