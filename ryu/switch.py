@@ -119,5 +119,6 @@ class SimpleSwitch(app_manager.RyuApp):
         switches=[switch.dp.id for switch in switch_list]
         links_list = get_link(self.topology_api_app, None)
         links=[(link.src.dpid,link.dst.dpid,{'port':link.src.port_no}) for link in links_list]
+        # (srcNode, dstNode, port)
         self.logger.info(links)
         self.logger.info(switches)
