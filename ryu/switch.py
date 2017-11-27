@@ -37,6 +37,7 @@ class SimpleSwitch(app_manager.RyuApp):
 
     def __init__(self, *args, **kwargs):
         super(SimpleSwitch, self).__init__(*args, **kwargs)
+        self.topology_api_app = self
         self.mac_to_port = {}
 
     def add_flow(self, datapath, in_port, dst, actions):
