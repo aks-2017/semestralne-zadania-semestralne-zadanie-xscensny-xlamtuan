@@ -50,7 +50,14 @@ class SimpleSwitch(app_manager.RyuApp):
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
         self.logger.info("Config_Dispatcher")
-        self.logger.info("id "+str(ev.msg.datapath.id)+" mac \n")
+
+
+        dst, src, _eth_type = struct.unpack_from('!6s6sH', buffer(ev.msg.data), 0)
+
+
+
+
+        self.logger.info("id "+str(ev.msg.datapath.id)+" mac "+haddr_to_str(dst))
         # self.switch_mac.append({id, mac = ev.msg.datapath.id,  })
         # install the table-miss flow entry.
         match = parser.OFPMatch()
