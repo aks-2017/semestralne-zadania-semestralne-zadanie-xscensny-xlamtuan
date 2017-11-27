@@ -31,6 +31,8 @@ from ryu.lib.packet import ether_types
 from ryu.topology import event, switches
 from ryu.topology.api import get_switch, get_link
 
+import sys
+
 
 class SimpleSwitch(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_0.OFP_VERSION]
@@ -39,6 +41,7 @@ class SimpleSwitch(app_manager.RyuApp):
         super(SimpleSwitch, self).__init__(*args, **kwargs)
         self.topology_api_app = self
         self.mac_to_port = {}
+        self.links
 
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
@@ -131,7 +134,9 @@ class SimpleSwitch(app_manager.RyuApp):
         switch_list = get_switch(self.topology_api_app, None)
         switches=[switch.dp.id for switch in switch_list]
         links_list = get_link(self.topology_api_app, None)
-        links=[(link.src.dpid,link.dst.dpid,{'port':link.src.port_no}) for link in links_list]
+        self.links=[(link.src.dpid,link.dst.dpid,{'port':link.src.port_no}) for link in links_list]
         # (srcNode, dstNode, port)
-        self.logger.info(links)
+        self.logger.info(self.links)
         self.logger.info(switches)
+        data = sys.stdin.readlines()
+        print data
