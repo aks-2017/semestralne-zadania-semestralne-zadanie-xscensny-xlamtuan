@@ -138,5 +138,5 @@ class SimpleSwitch(app_manager.RyuApp):
         # (srcNode, dstNode, port)
         self.logger.info(self.links)
         self.logger.info(switches)
-        data = sys.stdin.readlines()
-        print data
+        # data = sys.stdin.readlines()
+        # print data
