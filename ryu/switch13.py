@@ -17,19 +17,17 @@ from ryu.base import app_manager
 from ryu.controller import ofp_event
 from ryu.controller.handler import CONFIG_DISPATCHER, MAIN_DISPATCHER
 from ryu.controller.handler import set_ev_cls
-from ryu.ofproto import ofproto_v1_0
+from ryu.ofproto import ofproto_v1_3
 from ryu.lib.packet import packet
 from ryu.lib.packet import ethernet
 from ryu.lib.packet import ether_types
-from ryu.topology import event, switches
-from ryu.topology.api import get_switch, get_link
 
 
 class SimpleSwitch13(app_manager.RyuApp):
-    OFP_VERSIONS = [ofproto_v1_0.OFP_VERSION]
+    OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
 
     def __init__(self, *args, **kwargs):
-        super(SimpleSwitch, self).__init__(*args, **kwargs)
+        super(SimpleSwitch13, self).__init__(*args, **kwargs)
         self.mac_to_port = {}
 
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
@@ -119,27 +117,3 @@ class SimpleSwitch13(app_manager.RyuApp):
         out = parser.OFPPacketOut(datapath=datapath, buffer_id=msg.buffer_id,
                                   in_port=in_port, actions=actions, data=data)
         datapath.send_msg(out)
-
-    @set_ev_cls(event.EventSwitchEnter)
-    def get_topology_data(self, ev):
-        switch_list = get_switch(self.topology_api_app, None)   
-        switches=[switch.dp.id for switch in switch_list]
-        self.net.add_nodes_from(switches)
-         
-        #print "**********List of switches"
-        #for switch in switch_list:
-        #self.ls(switch)
-        #print switch
-        #self.nodes[self.no_of_nodes] = switch
-        #self.no_of_nodes += 1
-	
-        links_list = get_link(self.topology_api_app, None)
-        #print links_list
-        links=[(link.src.dpid,link.dst.dpid,{'port':link.src.port_no}) for link in links_list]
-        #print links
-        self.net.add_edges_from(links)
-        links=[(link.dst.dpid,link.src.dpid,{'port':link.dst.port_no}) for link in links_list]
-        #print links
-        self.net.add_edges_from(links)
-        print "**********List of links"
-        print self.net.edges()
