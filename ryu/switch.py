@@ -100,10 +100,11 @@ class SimpleSwitch(app_manager.RyuApp):
         msg = ev.msg
         reason = msg.reason
         port_no = msg.desc.port_no
+        dpid = msg.datapath.id
 
         ofproto = msg.datapath.ofproto
         if reason == ofproto.OFPPR_ADD:
-            self.logger.info("port added %s", port_no)
+            self.logger.info("port added from %d  %s", dpid, port_no)
         elif reason == ofproto.OFPPR_DELETE:
             self.logger.info("port deleted %s", port_no)
         elif reason == ofproto.OFPPR_MODIFY:
@@ -117,5 +118,5 @@ class SimpleSwitch(app_manager.RyuApp):
         switches=[switch.dp.id for switch in switch_list]
         links_list = get_link(self.topology_api_app, None)
         links=[(link.src.dpid,link.dst.dpid,{'port':link.src.port_no}) for link in links_list]
-        print links
-        print switches
+        self.logger.info(links)
+        self.logger.info(switches)
