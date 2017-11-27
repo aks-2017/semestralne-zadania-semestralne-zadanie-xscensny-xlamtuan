@@ -16,7 +16,7 @@
 """
 An OpenFlow 1.0 L2 learning switch implementation.
 """
-
+import struct
 
 from ryu.base import app_manager
 from ryu.controller import ofp_event
@@ -27,6 +27,7 @@ from ryu.lib.mac import haddr_to_bin
 from ryu.lib.packet import packet
 from ryu.lib.packet import ethernet
 from ryu.lib.packet import ether_types
+from ryu.lib.mac import haddr_to_str
 
 from ryu.topology import event, switches
 from ryu.topology.api import get_switch, get_link
