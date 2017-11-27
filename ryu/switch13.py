@@ -119,12 +119,27 @@ class SimpleSwitch13(app_manager.RyuApp):
         out = parser.OFPPacketOut(datapath=datapath, buffer_id=msg.buffer_id,
                                   in_port=in_port, actions=actions, data=data)
         datapath.send_msg(out)
-        
+
     @set_ev_cls(event.EventSwitchEnter)
     def get_topology_data(self, ev):
-        switch_list = get_switch(self.topology_api_app, None)
+        switch_list = get_switch(self.topology_api_app, None)   
         switches=[switch.dp.id for switch in switch_list]
+        self.net.add_nodes_from(switches)
+         
+        #print "**********List of switches"
+        #for switch in switch_list:
+        #self.ls(switch)
+        #print switch
+        #self.nodes[self.no_of_nodes] = switch
+        #self.no_of_nodes += 1
+	
         links_list = get_link(self.topology_api_app, None)
+        #print links_list
         links=[(link.src.dpid,link.dst.dpid,{'port':link.src.port_no}) for link in links_list]
-        print links
-        print switches
+        #print links
+        self.net.add_edges_from(links)
+        links=[(link.dst.dpid,link.src.dpid,{'port':link.dst.port_no}) for link in links_list]
+        #print links
+        self.net.add_edges_from(links)
+        print "**********List of links"
+        print self.net.edges()
