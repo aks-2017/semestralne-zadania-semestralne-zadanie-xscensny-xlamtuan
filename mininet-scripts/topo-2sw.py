@@ -37,12 +37,10 @@ if '__main__' == __name__:
 	h2.cmd('ifconfig h2-eth0 192.168.20.10 netmask 255.255.255.0')
 	h2.cmd('ip route add default via 192.168.20.1 dev h2-eth0')	
 
-	s1.start([c0])
-	s2.start([c0])
-	s3.start([c0])
-	s4.start([c0])
-	s5.start([c0])
-	s6.start([c0])
+	switch1.start([c0])
+	switch2.start([c0])
+	switch3.start([c0])
+	switch4.start([c0])	
 
 	net.startTerms()
 
