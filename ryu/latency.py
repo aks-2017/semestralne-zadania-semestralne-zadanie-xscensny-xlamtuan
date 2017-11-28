@@ -51,6 +51,8 @@ class customLatency(app_manager.RyuApp):
     
     @set_ev_cls(event.EventSwitchEnter)
     def get_topology_data(self, ev):
+        switch = ev.switch
+        self.logger.info(switch.dp.id)
         switch_list = get_switch(self.topology_api_app, None)
         switches=[switch.dp.id for switch in switch_list]
         links_list = get_link(self.topology_api_app, None)
