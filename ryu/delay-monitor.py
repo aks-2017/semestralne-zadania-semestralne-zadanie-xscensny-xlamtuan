@@ -257,5 +257,5 @@ class ProjectController(app_manager.RyuApp):
         if switch.dp.id == self.server_switch:
             for server in self.server_ips:
                 self.request_arp(switch.dp, server)
-            start_new_thread(self.monitor_server_latency, None )
+            start_new_thread(self.monitor_server_latency, )
             
