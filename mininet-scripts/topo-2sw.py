@@ -7,10 +7,9 @@ from time import sleep
 import subprocess
 
 if '__main__' == __name__:
-    net = Mininet(controller=RemoteController, link=TCLink)
+    	net = Mininet(controller=RemoteController, link=TCLink)
 
-	c0 = net.addController('c0', port=6633)
-
+    	c0 = net.addController('c0', port=6633)
 	h1 = self.addHost('h1')
 	h1 = self.addHost('h2')
 
@@ -29,7 +28,7 @@ if '__main__' == __name__:
 	self.addLink( h2, switch2, bw=100, delay='10ms')
 
 	net.build()
-    c0.start()	
+    	c0.start()	
 
 	h1.cmd('ifconfig h1-eth0 192.168.10.10 netmask 255.255.255.0')
 	h1.cmd('ip route add default via 192.168.10.1 dev h1-eth0')
