@@ -11,22 +11,22 @@ if '__main__' == __name__:
 
 	c0 = net.addController('c0', port=6633)
 
-	h1 = self.addHost('h1')
-	h1 = self.addHost('h2')
+	h1 = net.addHost('h1')
+	h1 = net.addHost('h2')
 
 	# add hosts
-	switch1 = self.addSwitch( 's1' , protocols='OpenFlow13')
-	switch2 = self.addSwitch( 's2' , protocols='OpenFlow13')
-	switch3 = self.addSwitch( 's3' , protocols='OpenFlow13')
-	switch4 = self.addSwitch( 's4' , protocols='OpenFlow13')	
+	switch1 = net.addSwitch( 's1' , protocols='OpenFlow13')
+	switch2 = net.addSwitch( 's2' , protocols='OpenFlow13')
+	switch3 = net.addSwitch( 's3' , protocols='OpenFlow13')
+	switch4 = net.addSwitch( 's4' , protocols='OpenFlow13')	
 	# add links
-	self.addLink( switch1, switch2, bw=100, delay='8ms')
-	self.addLink( switch1, switch3, bw=100, delay='8ms')
-	self.addLink( switch1, switch4, bw=100, delay='8ms')
-	self.addLink( switch2, switch3, bw=100, delay='8ms')
-	self.addLink( switch2, switch4, bw=100, delay='8ms')
-	self.addLink( h1, switch1, bw=100, delay='10ms')
-	self.addLink( h2, switch2, bw=100, delay='10ms')
+	net.addLink( switch1, switch2, bw=100, delay='8ms')
+	net.addLink( switch1, switch3, bw=100, delay='8ms')
+	net.addLink( switch1, switch4, bw=100, delay='8ms')
+	net.addLink( switch2, switch3, bw=100, delay='8ms')
+	net.addLink( switch2, switch4, bw=100, delay='8ms')
+	net.addLink( h1, switch1, bw=100, delay='10ms')
+	net.addLink( h2, switch2, bw=100, delay='10ms')
 
 	net.build()
     c0.start()	
