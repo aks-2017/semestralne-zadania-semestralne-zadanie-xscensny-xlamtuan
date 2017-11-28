@@ -9,14 +9,9 @@ import subprocess
 if '__main__' == __name__:
     	net = Mininet(controller=RemoteController, link=TCLink)
 
-<<<<<<< HEAD
     	c0 = net.addController('c0', port=6633)
-	h1 = self.addHost('h1')
-	h1 = self.addHost('h2')
-=======
 	h1 = net.addHost('h1')
-	h1 = net.addHost('h2')
->>>>>>> a4f0f22b866d67d554b6a83393bc6461c3e5a5f2
+	h2 = net.addHost('h2')
 
 	# add hosts
 	switch1 = net.addSwitch( 's1' , protocols='OpenFlow13')
