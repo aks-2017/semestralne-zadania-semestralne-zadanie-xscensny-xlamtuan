@@ -22,17 +22,17 @@ def emptyNet():
 
     info( '*** Adding switch\n' )
     s1 = net.addSwitch( 's1', cls=OVSSwitch )
-    s2 = net.addSwitch( 's2', cls=OVSSwitch )
-    s3 = net.addSwitch( 's3', cls=OVSSwitch )
+    #s2 = net.addSwitch( 's2', cls=OVSSwitch )
+    #s3 = net.addSwitch( 's3', cls=OVSSwitch )
 
 
     info( '*** Creating links\n' )
-    net.addLink( h1, s1 )
-    net.addLink( h2, s3 )
+    net.addLink( h1, s1, delay='20ms' )
+    net.addLink( h2, s1, delay='30ms' )
 
-    net.addLink( s1, s3, delay='0.25ms' )
-    net.addLink( s2, s3, delay='0.25ms' )
-    net.addLink( s1, s2, delay='0.25ms' )
+    # net.addLink( s1, s3, delay='0.25ms' )
+    # net.addLink( s2, s3, delay='0.25ms' )
+    # net.addLink( s1, s2, delay='0.25ms' )
 
     info( '*** Starting network\n')
     net.start()
