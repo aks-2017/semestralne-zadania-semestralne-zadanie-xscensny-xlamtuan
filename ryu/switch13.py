@@ -63,7 +63,10 @@ class SimpleSwitch13(app_manager.RyuApp):
 
         dpid = datapath.id
         self.mac_to_port.setdefault(dpid, {})
-
+	if eth.ethertype == ether_types.ETH_TYPE_ARP:
+	    self.logger.info("ARP")
+	else:
+	    self.logger.info("ICMP")
         self.logger.info("packet in %s %s %s %s", dpid, src, dst, in_port)
 
         # learn a mac address to avoid FLOOD next time.
