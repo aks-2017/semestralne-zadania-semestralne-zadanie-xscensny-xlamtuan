@@ -1,1 +1,1 @@
-sudo mn --custom mininet-scripts/tipo-experimental.py --topo mytopo --controller remote -x --switch ovs,protocols=OpenFlow13
+sudo mn --custom mininet-scripts/tipo-experimental.py --topo mytopo --controller remote  --switch ovs,protocols=OpenFlow13 --link tc,bw=10,delay=10ms
